@@ -1,0 +1,280 @@
+/* Base */
+:root {
+  --brand: #f97316;
+  --brand-dark: #ea580c;
+  --brand-soft: #ffedd5;
+}
+
+body {
+  background: linear-gradient(135deg, #fff7ed, #fffbeb, #fefce8);
+  background-attachment: fixed;
+  font-family: "Poppins", sans-serif;
+  color: #374151;
+}
+
+.container {
+  max-width: 1280px;
+}
+
+/* Navbar */
+.top-bar {
+  border-bottom: 1px solid #ffedd5;
+}
+
+.logo-badge {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+.brand-title {
+  font-size: 1.125rem;
+  color: #111827;
+}
+
+.brand-sub {
+  font-size: 0.75rem;
+}
+
+/* !important because Bootstrap's text-secondary also uses it */
+.top-icon:hover {
+  color: var(--brand-dark) !important;
+}
+
+.profile-pic {
+  border-color: #fdba74 !important;
+}
+
+/* Recipe card */
+.dish-card {
+  border-radius: 1.5rem;
+  border: 1px solid #ffedd5;
+}
+
+.photo-wrap {
+  height: 400px;
+}
+
+.facts-box {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+}
+
+.fact-prep {
+  color: #f97316;
+}
+.fact-cook {
+  color: #ef4444;
+}
+.fact-serve {
+  color: #3b82f6;
+}
+
+/* Title area */
+.recipe-name {
+  font-size: 1.5rem;
+  color: #111827;
+}
+
+.recipe-desc {
+  font-size: 0.875rem;
+}
+
+.pill {
+  font-size: 0.75rem;
+}
+
+.pill-level {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.pill-cuisine {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.square-btn {
+  width: 48px;
+  height: 48px;
+  background: var(--brand-soft);
+  color: var(--brand-dark);
+}
+
+.square-btn:hover {
+  background: #fed7aa;
+  color: var(--brand-dark);
+}
+
+/* Alerts recolored with Bootstrap's own variables */
+.alert-danger {
+  --bs-alert-bg: #fef2f2;
+  --bs-alert-color: #dc2626;
+  --bs-alert-border-color: #fb2c36;
+}
+
+.alert-warning {
+  --bs-alert-bg: #fffbeb;
+  --bs-alert-color: #374151;
+  --bs-alert-border-color: #fbbf24;
+}
+
+.alert-warning i {
+  color: #d97706;
+}
+
+/* Tabs */
+.nav-tabs {
+  --bs-nav-tabs-border-color: #e5e7eb;
+}
+
+.nav-tabs .nav-link {
+  background: transparent;
+  color: #6b7280;
+  position: relative;
+  white-space: nowrap;
+  font-size: 0.75rem;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #374151;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--brand-dark);
+  background: transparent;
+}
+
+.nav-tabs .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--brand-dark);
+}
+
+/* Fixed height, scrolls up and down only (no sideways scroll) */
+.tab-scroll {
+  height: 350px;
+}
+
+/* Ingredients + steps */
+.ingredient-box {
+  background: linear-gradient(135deg, #fff7ed, #fffbeb);
+}
+
+.dot-num {
+  width: 24px;
+  height: 24px;
+  font-size: 0.75rem;
+  background: var(--brand);
+}
+
+.step-num {
+  width: 48px;
+  height: 48px;
+  background: var(--brand);
+}
+
+/* Nutrition: 1 column on mobile, 2 columns from md */
+.macro-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.macro-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.macro-orange {
+  background: #ffedd5;
+  color: #ea580c;
+}
+.macro-blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.macro-yellow {
+  background: #fef9c3;
+  color: #ca8a04;
+}
+.macro-red {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.macro-green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+.macro-pink {
+  background: #fce7f3;
+  color: #db2777;
+}
+
+/* Try another recipe button */
+.main-btn {
+  background: linear-gradient(90deg, #f97316, #ef4444);
+  border: none;
+  transition: transform 0.2s;
+}
+
+.main-btn:hover {
+  background: linear-gradient(90deg, #ea580c, #dc2626);
+  transform: scale(1.05);
+}
+.tab-scroll {
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Tablet and up (768px+) */
+@media (min-width: 768px) {
+  .brand-title {
+    font-size: 1.5rem;
+  }
+  .brand-sub {
+    font-size: 0.875rem;
+  }
+  .recipe-name {
+    font-size: 2.25rem;
+  }
+  .recipe-desc {
+    font-size: 1.125rem;
+  }
+  .nav-tabs .nav-link {
+    font-size: 1rem;
+  }
+  .macro-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop (992px+): photo 40% and details 60% */
+@media (min-width: 992px) {
+  .dish-card {
+    min-height: 750px;
+  }
+
+  .photo-col,
+  .info-col {
+    flex: 0 0 auto;
+  }
+
+  .photo-col {
+    width: 40%;
+  }
+
+  .info-col {
+    width: 60%;
+  }
+
+  .photo-wrap {
+    height: 100%;
+    min-height: 700px;
+  }
+}

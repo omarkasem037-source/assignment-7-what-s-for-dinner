@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's For Dinner?</title>
+
+    <!-- Google Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Local CSS: Bootstrap, Font Awesome, then our own file last -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar bg-white shadow-sm top-bar py-3">
+      <div class="container px-4">
+        <a class="navbar-brand d-flex align-items-center gap-3 m-0" href="#">
+          <div class="logo-badge d-flex align-items-center justify-content-center rounded-circle text-white shadow">
+            <i class="fa-solid fa-utensils fs-5"></i>
+          </div>
+          <div>
+            <h1 class="brand-title fw-bold m-0">What's For Dinner</h1>
+            <p class="brand-sub text-body-secondary m-0">Your daily meal inspiration</p>
+          </div>
+        </a>
+
+        <!-- Desktop icons (hidden on mobile) -->
+        <div class="d-none d-md-flex align-items-center gap-4">
+          <a href="#" class="top-icon text-secondary text-decoration-none fs-5"><i class="fa-solid fa-bookmark"></i></a>
+          <a href="#" class="top-icon text-secondary text-decoration-none fs-5"
+            ><i class="fa-solid fa-clock-rotate-left"></i
+          ></a>
+          <a href="#" class="top-icon text-secondary text-decoration-none fs-5"><i class="fa-solid fa-gear"></i></a>
+          <img
+            src="./images/logo.jpg"
+            alt="Profile"
+            width="40"
+            height="40"
+            class="profile-pic rounded-circle object-fit-cover border border-2" />
+        </div>
+
+        <!-- Mobile menu button + menu (Bootstrap collapse, no JS needed) -->
+        <button
+          class="top-icon btn border-0 p-0 text-secondary fs-4 d-md-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mobileMenu"
+          aria-label="Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse d-md-none mt-3 pt-3 border-top" id="mobileMenu">
+          <div class="d-flex flex-column gap-3">
+            <a href="#" class="top-icon text-secondary text-decoration-none d-flex align-items-center"
+              ><i class="fa-solid fa-bookmark fs-5 me-3"></i><span>Saved Recipes</span></a
+            >
+            <a href="#" class="top-icon text-secondary text-decoration-none d-flex align-items-center"
+              ><i class="fa-solid fa-clock-rotate-left fs-5 me-3"></i><span>Recent</span></a
+            >
+            <a href="#" class="top-icon text-secondary text-decoration-none d-flex align-items-center"
+              ><i class="fa-solid fa-gear fs-5 me-3"></i><span>Settings</span></a
+            >
+            <a href="#" class="top-icon text-secondary text-decoration-none d-flex align-items-center">
+              <img
+                src="./images/logo.jpg"
+                alt="Profile"
+                width="32"
+                height="32"
+                class="profile-pic rounded-circle object-fit-cover border border-2 me-3" />
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container px-4 py-4">
+      <section class="dish-card row g-0 bg-white shadow-lg overflow-hidden mb-4">
+        <!-- Left column: photo -->
+        <div class="col-lg-5 photo-col">
+          <!-- JS SECTION 1 START: Replace this static image, rating, and statistics -->
+          <div id="photoSection" class="h-100"></div>
+          <!-- JS SECTION 1 END -->
+        </div>
+
+        <!-- Right column: details -->
+        <div class="col-lg-7 p-4 p-lg-5 info-col">
+          <!-- JS SECTION 2 START: Generate recipe title, description, badges, and alert -->
+          <div id="infoSection">
+            <div id="recipeHeader"></div>
+            <!-- JS CONDITION: Show this alert only when prepTime > 45; otherwise hide it (add d-none). -->
+            <div
+              class="alert alert-danger d-flex align-items-center border-0 border-start border-4 mb-4"
+              id="timeWarning"
+              role="alert">
+              <i class="fa-solid fa-triangle-exclamation fs-4 me-3"></i>
+              <div>
+                <strong class="d-block">Extended Preparation Time</strong>
+                <small>This recipe requires more than 45 minutes to prepare. Plan accordingly!</small>
+              </div>
+            </div>
+          </div>
+          <!-- JS SECTION 2 END -->
+
+          <!-- Tabs (static, Bootstrap switches them with no JS from us) -->
+          <ul class="nav nav-tabs nav-fill mb-4" id="dishTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active fw-semibold"
+                id="ingredients-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#ingredients"
+                type="button"
+                role="tab">
+                <i class="fa-solid fa-list-check me-2"></i>Ingredients
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link fw-semibold"
+                id="instructions-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#instructions"
+                type="button"
+                role="tab">
+                <i class="fa-solid fa-book-open me-2"></i>Instructions
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link fw-semibold"
+                id="nutrition-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nutrition"
+                type="button"
+                role="tab">
+                <i class="fa-solid fa-chart-pie me-2"></i>Nutrition
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link fw-semibold"
+                id="tips-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#tips"
+                type="button"
+                role="tab">
+                <i class="fa-solid fa-lightbulb me-2"></i>Chef's Tips
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content tab-scroll" id="dishTabsContent">
+            <div class="tab-pane fade show active" id="ingredients" role="tabpanel">
+              <div class="ingredient-box p-4 pb-3 rounded-4">
+                <!-- JS SECTION 3 START: Generate ingredient items -->
+                <ul class="list-unstyled m-0" id="ingredientsList"></ul>
+                <!-- JS SECTION 3 END -->
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="instructions" role="tabpanel">
+              <!-- JS SECTION 4 START: Generate numbered steps -->
+              <ul class="list-unstyled m-0" id="instructionsList"></ul>
+              <!-- JS SECTION 4 END -->
+            </div>
+
+            <div class="tab-pane fade" id="nutrition" role="tabpanel">
+              <!-- JS SECTION 5 START: Fill nutrition values -->
+              <div class="macro-grid"></div>
+              <!-- JS SECTION 5 END -->
+            </div>
+
+            <div class="tab-pane fade" id="tips" role="tabpanel">
+              <!-- JS SECTION 6 START: Generate chef tips -->
+              <div id="tipsList"></div>
+              <!-- JS SECTION 6 END -->
+            </div>
+          </div>
+
+          <div class="border-top mt-4 pt-4">
+            <!-- JS SECTION 7: Connect this button to the generate function -->
+            <button
+              class="btn main-btn text-white fw-semibold rounded-3 px-4 py-2 shadow-lg"
+              type="button"
+              id="anotherBtn"
+              onclick="getRandomRecipe()">
+              <i class="fa-solid fa-arrows-rotate me-2"></i>Try Another Recipe
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
